@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>갤러리1</title>
+    <style>
+        #wrapper{
+            width: 500px;
+            height: 450px;
+            margin: auto;
+        }
+        #img{
+            width: 100%;
+            height: 400px;
+            background: indigo;
+            border: 1px solid gray;
+            box-sizing: border-box;
+        }
+        #btn{
+            width: 500px;
+            height: 50px;
+            border: 1px solid gray;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+        /* selector 에서 한 칸을 띄울 경우 : 하위의 자식 요소들 */
+        #btn button{
+            font-size: 25px;
+            padding: 4px;
+        }
+        #bt_left{
+            
+        }
+        #bt_right{
+            float:right; /*자식이 떠있으면 원칙상 부모의 overflow:hidden*/
+        }
+        #pic{
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+    <script>
+        // 내가 원하는 코드 영역에 이름을 붙인 단위를 함수라 하고 우리는 지금
+        // next() 이름의 코드 영역을 정의한 것이다. 따라서 원할 떼 아무때나 저 코드
+        // 이름만 부르면, 이 코드 영역이 실행을 하게 된다
+        // 단, 내가 정의한 함수 영역을 사용자 정의 함수라 하고, 앞에 function을 붙인다.
+
+        var n=1;
+        function next(){
+            // alert(n);
+            // 문서내의 pic이라는 요소에 src의 값을 변경해보자
+            // 이럴 경우, 사용자는 이미지가 자동으로 교체되는 효과.
+            n = n+1;
+            //대부분의 프로그래밍 언어에서는 식별성을 높이기 위해 복합어로 구성된 단어에 대해 명명 규칙
+            // 낙타등 표기법 : camel 기법
+            // 단어와 단어가 만나면, 뒷 철자를 대문자로 표기한다.
+
+            // 숫자와 문자를 대상으로 연산을 수행하면 연산 자체가 불가하므로
+            // 즉 문자가 연산에 껴있으면 전체가 문자가 된다.
+            document.getElementById("pic").src="../images/travel/"+n+".jpg";
+        }
+        function prev(){
+            n = n - 1;
+            document.getElementById("pic").src="../images/travel/"+n+".jpg";
+        }
+    </script>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="img">
+            <img id="pic" src="../images/travel/1.jpg"/>
+        </div>
+        <div id="btn">
+            <button id="bt_left" onclick="prev()">◀</button>
+            <button id="bt_right" onclick="next()">▶</button>
+        </div>
+    </div>
+</body>
+</html>
