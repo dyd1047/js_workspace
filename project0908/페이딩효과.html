@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>페이딩효과</title>
+    <script>
+        /*
+            자바스크립트를 이용하면 실행 타임에도 CSS를 변경할 수 있따.
+            즉 CSS를 동적으로 변경할 수 있다.
+        */
+        var op=1;
+        function transparent(){
+            // 문서 내의 pic라는 요소의 css 중 투명도값를 투명하게 하자
+            op = op - 0.1;
+            document.getElementById("pic").style.opacity=op;
+        }
+        function untransparent(){
+            op = op + 0.1;
+            document.getElementById("pic").style.opacity=op;
+        }
+        
+    </script>
+</head>
+<body>
+    <img id="pic" src="../images/9.png">
+<button onclick="untransparent()">불투명st..</button>
+    <button onclick="transparent()">투명st..</button>
+</body>
+</html>

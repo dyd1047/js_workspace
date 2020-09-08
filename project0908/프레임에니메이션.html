@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>프레임에니메이션</title>
+    <style>
+        #wrapper{
+            width: 300px;
+            height: 300px;
+            margin: auto;
+        }
+        #pic{
+            width: 300px;
+            height: 300px;
+        }
+    </style>
+    <script>
+        var n=1; //특수문자도 허용하지 않음(예외 - $, _ 는 가능), 숫자로 시작해도 안됨
+        function next(){
+            n = n + 1;
+            document.getElementById("pic").src="../images/hero/image"+n+".png";
+        }
+    </script>
+</head>
+<body>
+    <div id="wrapper">
+        <img id="pic" src="../images/hero/image1.png">
+    </div>
+    <button onclick="next()">next</button>
+</body>
+</html>
