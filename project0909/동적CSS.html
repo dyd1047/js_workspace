@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>동적CSS</title>
+    <style>
+        #wrapper{
+            width: 800px;
+            height: 600px;
+            margin: auto;
+        }
+        #control{
+            width: 200px;
+            height: 600px;
+            background: yellow;
+            float: left;
+        }
+        #result{
+            width: 600px;
+            height: 600px;
+            float: left;
+        }
+        /* 이미지에 대한 스타일 */
+        #pic{
+            width: 100px;
+            height: 100px;
+            border: 1px dotted black;
+        }
+    </style>
+    <script>
+        /*
+        여기 영역이 html이 아닌 프로그래밍 영역임
+        이 영역이 수행되는 시점 : 브라우저 실행할 때
+        */ 
+        // 변수 선언 영역
+        var w = 100; //너비값
+        var h = 100; //높이값
+        var scX = 1; //x스케일 값
+        var scY = 1; //x스케일 값
+        var op = 1; //투명도 값
+        var rt = 0; //회전율 값
+        var bd = 1; //테두리 값
+
+       // 문서내의 pic라는 요소의 css 너비를 늘린다.
+       function setWidth(){
+           w = w +10;
+           document.getElementById("pic").style.width = w + "px";
+       }
+
+       // 문서내의 pic라는 요소의 css 높이를 늘린다.
+       function setHeight(){
+           h = h + 10;
+           document.getElementById("pic").style.height = h + "px";
+       }
+
+       // 문서내의 pic이라는 요소의 css의 scaleX의 값을 늘린다.
+       // 스케일은 너비의 배수를 의미 ex) 2는 2배, 3은 3배, 0.5는 절반
+       function setScaleX(){
+           scX = scX + 0.5;
+           document.getElementById("pic").style.transform = "scaleX(" + scX + ")";
+       }
+
+       // 문서내의 pic이라는 요소의 css의 scaleY의 값을 늘린다.
+       function setScaleY(){
+           scY = scY + 0.5;
+           document.getElementById("pic").style.transform = "scaleY(" + scY + ")";
+       }
+
+       // 문서내의 pic이라는 요소의 css의 opacity의 값을 늘린다.
+       function setOpacity(){
+           op = op - 0.1;
+           document.getElementById("pic").style.opacity = op;
+       }
+
+       // 문서내의 pic이라는 요소의 css의 rotate의 값을 늘린다.
+       function setRotate(){
+           rt = rt + 5;
+           document.getElementById("pic").style.transform = "rotate(" + rt + "deg)";
+       }
+
+       // 문서내의 pic이라는 요소의 css의 border의 값을 늘린다.
+       function setBorder(){
+           bd = bd + 1;
+           document.getElementById("pic").style.border = bd + "px solid red";
+       }
+    </script>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="control">
+            <!-- ul이란 un ordered list 순서없는 목록 -->
+            <ul>
+                <li>
+                    <button onclick="setWidth()">width</button>
+                    <button onclick="setHeight()">height</button>
+                </li>
+                <li>
+                    <button onclick="setScaleX()">scaleX</button>
+                    <button onclick="setScaleY()">scaleY</button>
+                </li>
+                <li>
+                    <button onclick="setOpacity()">opacity</button>
+                </li>
+                <li>
+                    <button onclick="setRotate()">rotate</button>
+                </li>
+                <li>
+                    <button onclick="setBorder()">border</button>
+                </li>
+            </ul>
+        </div>
+        <div id="result">
+            <img id="pic" src="../images/hero/image1.png">
+        </div>
+    </div>
+</body>
+</html>
