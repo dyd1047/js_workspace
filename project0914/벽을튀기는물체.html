@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>벽을튀기는물체</title>
+    <style>
+        #wrapper{
+            width: 700px;
+            height: 700px;
+            margin: auto;
+            border: 1px solid red;
+            position: relative;
+        }
+    </style>
+    <script>
+        var box;
+        var x = 0;
+        var y = 100;
+        var stepX = 5;
+        var stepY = 8;
+        var flagX = false;
+        var flagY = false;
+
+        function init(){
+            //문서가 로드되면, 초기화할 작업을 아래의 init 함수에서 처리해보자
+            // 박스의 스타일을 css에서가 아니라, js 프로그래밍으로 처리한다!
+            // 효과적으로는 달라질게 없으나 css를 프로그램으로 제어할 수 있다.
+            box = document.getElementById("box");
+            box.style.width = 50 + "px";
+            box.style.height = 50 + "px";
+            box.style.background = "gray"
+            box.style.position = "absolute";
+            box.style.left = x + "px";
+            box.style.top = y + "px";
+        }
+
+        function move(){
+            x = x + stepX;
+            y = y + stepY;
+            box.style.left = x + "px";
+            box.style.top = y + "px";
+            if (y <= 0 || y >= 650) {
+                flagY = !flagY;
+            }else{
+                flagY = flagY;
+            } 
+            if (x <= 0 || x >= 650) {
+                flagX = !flagX;
+            }else{
+                flagX = flagX;
+            }
+            stepX = (flagX) ? 5 : -5;
+            stepY = (flagY) ? 8 : -8;
+        }
+
+        function auto(){
+            setInterval("move()", 10);
+        }
+    </script>
+</head>
+<body onload="init()">
+    <div id="wrapper">
+        <button id="manu" onclick="move()">manu</button>
+        <button id="auto" onclick="auto()">auto</button>
+        <div id="box"></div>
+    </div>
+</body>
+</html>

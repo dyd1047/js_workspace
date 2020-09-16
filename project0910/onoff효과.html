@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>onoff효과</title>
+    <style>
+        body{
+            background-color: black;
+        }
+    </style>
+    <script>
+        //버튼을 누를 때 마다 현재 배경 색상의 반대 색상으로 처리하자
+        // 불켜고, 끄는 효과를 낼 수 있다.
+        var bg;
+        var flag = true;
+
+        function turn(){
+            bg = (flag) ? "white" : "black";
+            document.body.style.backgrounnd = bg;
+            flag = !flag;
+            console.log(flag);
+        }
+    </script>
+</head>
+<body>
+    <button onclick="turn()">원터치 스위치</button>
+</body>
+</html>

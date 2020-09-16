@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>공이미지생성</title>
+    <script>
+        var n = prompt("몇번째마다 다른 공을 생성할래요?");
+        n = parseInt(n);
+        var count = 0;
+        function createBall(){
+            count++;
+            console.log("count is ", count)
+            var img = document.createElement("img");
+            if ((count % n) != 0) {
+                img.src = "../images/1.jpg";
+            }else{
+                img.src = "../images/3.png";
+            }
+                
+                document.body.appendChild(img);
+        }
+    </script>
+</head>
+<body>
+    <button onclick="createBall()">click</button>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>공이미지생성2</title>
+    <script>
+        var count = 0;
+        function createBall(){
+            count++;
+            console.log("count is ", count)
+            var img = document.createElement("img");
+            // 변수 n의 값을 텍스트박스로부터 구하자
+            var n = document.getElementById("txt").value;
+            n = parseInt(n);
+            var path = document.getElementById("path").value;
+            if ((count % n) != 0) {
+                img.src = "../images/1.jpg";
+            }else{
+                img.src = path;
+            }
+            
+            img.style.width = "100px"    
+            document.body.appendChild(img);
+        }
+        function auto(){
+            setInterval("createBall()", 100);
+        }
+    </script>
+</head>
+<body>
+    <input id="txt" type="text" placeholder="몇 번째 마다 공을 생성할지 숫자 입력">
+    <input id="path" type="text" placeholder="사용될 이미지 경로">
+    <button onclick="createBall()">manuCreate</button>
+    <button onclick="auto()">autoCreate</button>
+    <br>
+</body>
+</html>

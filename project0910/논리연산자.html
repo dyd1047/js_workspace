@@ -1,0 +1,23 @@
+<script>
+    /*
+        우리가 알고 있는 대부분의 연산자는 주로 숫자형 데이터를 대상으로
+        한다고 생각하겠으나, 전산에서는 사용할 수 있는 데이터의 종류가 
+        숫자, 문자, 논리값 3가지 이므로, 논리값을 반환해해는 연산자도 있다.
+
+        &&  and 연산자 : 전체가 true가 되는 조건이 까다로운 연산자
+        ||    or 연산자 : 전체가 true가 되는 조건이 관대한 연산자
+        !      not 연산자 : 기존 논리값을 바꿔주는 연산자
+                                true => false, false => true
+    */
+
+    // and 연산자는 연산 대상이 모두 true 이어야 true를 반환하는 연산자
+    var x = true;
+    var y = false;
+    var z = x && y; // 결과 : false
+    var a = x || y; // 결과 : true
+
+    var k = true;
+    var m = !k;
+    console.log(m); // 결과 : false
+
+</script>

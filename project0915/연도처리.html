@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>연도처리</title>
+    <script>
+        function init(){
+            // option 태그를 동적으로 만들어서 select박스에 추가하자
+            for(var i = 2000; i >= 1930; i--){
+                var op = document.createElement("option");
+                op.text = i;
+                // 생성된 option 요소를 select박스에 추가ㅏ!!
+                var yy = document.getElementById("year");
+                yy.add(op);
+            }
+        }
+    </script>
+</head>
+<body onload="init()">
+    <select id="year">
+        <option value="">출생연도</option>
+    </select>
+    <select>
+        <option>출생월</option>
+        <option>1월</option>
+        <option>2월</option>
+        <option>3월</option>
+        <option>4월</option>
+        <option>5월</option>
+        <option>6월</option>
+        <option>7월</option>
+        <option>8월</option>
+        <option>9월</option>
+        <option>10월</option>
+        <option>11월</option>
+        <option>12월</option>
+    </select>
+</body>
+</html>

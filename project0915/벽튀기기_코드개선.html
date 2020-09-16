@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>벽튀기기</title>
+    <script>
+        // 이 예제는 바디에 직접 태그를 작성하지 말자
+        // 순수 자바스크립트로만 디자인까지
+        var wrapper;
+        var ball;
+        var x = 0;
+        var y = 0;
+        var stepX = 5;
+        var stepY = 4;
+        var flag = true;
+
+        function init(){
+            // 수동, 자동 버튼 생성
+            createButton();
+
+            // alert('문서를 다 읽었어요')
+            wrapper = document.createElement("div"); // <div></div> 동일
+            wrapper.style.width = 600 + "px";
+            wrapper.style.height = 600 + "px";
+            wrapper.style.background = "yellow";
+            wrapper.style.margin = "auto";
+            wrapper.style.position = "relative";
+            document.body.appendChild(wrapper); //<body>안에 추가
+
+            // 공 추가하기
+            ball = document.createElement("img"); // <img/>
+            ball.src = "../images/ball_sp.png";
+            ball.style.width = 60 + "px";
+            ball.style.height = 50 + "px";
+            ball.style.position = "absolute";
+            ball.style.left = 0 + "px";
+            ball.style.top = 0 + "px";
+            wrapper.appendChild(ball); // body에 추가
+
+
+        }
+        function createButton(){
+            // 동적으로 버튼을 생성하고, click 이벤트 마저도 프로그래밍적으로 처리
+            var bt1 = document.createElement("button"); // 수동버튼
+            var bt2 = document.createElement("button"); // 자동버튼
+            var bt3 = document.createElement("button"); // Pause버튼
+
+            // 버튼에 click 이벤트 추가하기
+            bt1.addEventListener("click", function(){
+                // 이름 없는 함수를 익명함수라 하고, 이 영역에 코드를 작성하면
+                // 해당 이벤트가 발생했을 때 이 코드가 동작하게 된다.
+                // alert("뒤질래?");
+                // 수동 움직임
+                move();
+            }); // 버튼에 이벤트 감지가 등록
+
+            bt2.addEventListener("click", function(){
+                setInterval("move()", 30);
+                // 현재 버튼을 더이상 못 누르도록 비활성화 시킨다!
+                bt2.disabled = flag; // 버튼의 비활성화 여부를 true
+            });
+
+            bt3.addEventListener("click", function(){
+                // 한 번누르면 동작, 또 한번 누르면 멈춤
+                flag = !flag;
+            });
+
+            bt1.innerText = "수동"; // <button>수동</button>
+            bt2.innerText = "자동"; // <button>수동</button>
+            bt3.innerText = "Pause"; // <button>수동</button>
+            document.body.appendChild(bt1);
+            document.body.appendChild(bt2);
+            document.body.appendChild(bt3);
+        }
+
+        // 공의 좌표를 증, 감 시켜 움직임 효과를 내본다!
+        function move(){
+            if(flag){
+                // 증감처리
+                x += stepX;
+                y += stepY;
+
+                // 공의 좌표를 변겅
+                ball.style.left = x + "px";
+                ball.style.top = y + "px";
+
+                // 공이 좌측이나 우측 벽에 도달하면, 닿는 순간 = 우측벽의 x좌표 - 공의 너비
+                // if (x >= (parseInt(wrapper.style.width) - parseInt(ball.style.width)) || x <= 0) {
+                //     // x축으로 감소하면서 이동
+                //     ball.style.border = "1px solid red";
+                //     stepX = -stepX;
+                // }
+                stepX = (x >= (parseInt(wrapper.style.width) - parseInt(ball.style.width)) || x <= 0) ? -stepX : stepX;
+
+                // 공이 천장이나 바닥에 도달하면, 닿는 순간 = 바닥의 y좌표 - 공의 너비
+                // if (y >= (parseInt(wrapper.style.height) - parseInt(ball.style.height)) || y <= 0) {
+                //     // x축으로 감소하면서 이동
+                //     stepY = -stepY;
+                // }
+                stepY = (y >= (parseInt(wrapper.style.height) - parseInt(ball.style.height)) || y <= 0) ? -stepY : stepY;
+            }
+        }
+    </script>
+</head>
+<body onload="init()">
+    
+</body>
+</html>

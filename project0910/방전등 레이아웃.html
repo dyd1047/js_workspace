@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>방전등레이아웃</title>
+    <style>
+        #wrapper{
+            width: 800px;
+            height: 600px;
+            background: red;
+            margin: auto;
+            position: relative;
+        }
+        /* wrapper 자식인 code, content 를 부모를 기준으로 배치할 것임  */
+        #code{
+            width: 100px;
+            height: 100%;
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            background: #dfdfdf;
+        }
+        #content{
+            width: 700px;
+            height: 100%;
+            position: absolute;
+            left: 100px;
+            top: 0px;
+            background: green;
+        }
+        #mask{
+            width: 700px;
+            height: 600px;
+            background: black;
+            opacity: 0.8;
+        }
+        img, #mask{
+            position: absolute;
+            left: 0px;
+            top: 0px;
+        }
+    </style>
+    <script>
+        var status; // on off 을 결정할 변수
+        var op;
+        var flagSwitch = true;
+        function turn(){
+            // 문서내의 pic 요소의 src 속성을 변경하자!
+            status = (flagSwitch) ? "on" : "off";
+            op = (flagSwitch) ? "0" : "0.8";
+            document.getElementById("pic").src="../images/light/switch_" + status + ".png";
+            document.getElementById("mask").style.opacity = op;
+            flagSwitch = !flagSwitch;
+        }
+    </script>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="code">
+            <img id="pic" src="../images/light/switch_off.png" onclick="turn()"/>
+        </div>
+        <div id="content">
+            <img src="../images/light/room.jpg" width="700px" height="600px"/>
+            <div id="mask"></div>
+        </div>
+    </div>
+</body>
+</html>

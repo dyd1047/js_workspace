@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>왔다갔다 풀이</title>
+    <style>
+        #box{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            left: 0px;
+            top: 150px; 
+            color: yellow;
+            font-size: 40px;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+    <script>
+        var x = 0; // box의 x좌표
+        var step = 5; // 우측, 좌측을 결정짓는 발걸음 변수
+        var flag = true;
+        var box;
+        // body 태그안의 모든 요소가 생성된 이후에, 즉 로드된 이후에 자바스크립트에서
+        // 접근해야 하므로, 초기화 함수는 onload 이벤트 핸들러에서 호출하도록 한다
+        function init(){
+            box = document.getElementById("box");
+        }
+        function move(){
+            x = x + step ;
+            document.getElementById("box").style.left = x + "px";
+            // box 안의 x값 출력
+            document.getElementById("box").innerText = x;
+
+            // 400이상이거나, 0이하면 기존의 5는 부호를 바꿔야 한다.
+            flag = (x <= 0 || x >= 400) ? !flag : flag;
+            step = (flag) ? 5 : -5;
+        }
+
+        // 자동으로 움직이게 처리
+        function auto(){
+            setInterval("move()", 10);
+        }
+    </script>
+</head>
+<body>
+    <button onclick="move()">수동 움직이기</button>
+    <button onclick="auto()">자동 움직이기</button>
+    <div id="box"></div>
+</body>
+</html>
