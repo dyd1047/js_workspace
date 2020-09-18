@@ -20,8 +20,11 @@
             // selector란? css에서 요소를 특정짓기위한 지칭법
             var box = document.querySelector("div"); // css의 선택자는 모두 표현 가능
 
+            // 반복횟수를 몇 번으로 할지를 텍스트박스에서 구해오자!
+            var n = document.querySelector("input[type = 'text']").value;
+            n = parseInt(n);
             // 이미지 태그요소를 동적으로 만들어서 box에 추가하자
-            for(var i = 0; i <= 199; i++){
+            for(var i = 1; i <= 199; i++){
                 var img = document.createElement("img");
                 img.src = "../images/1.jpg";
                 img.style.width = 50 + "px";

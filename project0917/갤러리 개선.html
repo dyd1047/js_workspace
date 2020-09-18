@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .wrapper{
+            width: 700px;
+            height: 600px;
+            margin: auto;
+            border: 5px solid black;
+        }
+
+        .thumb{
+            width: 150px;
+            height: 100%;
+            float: left;
+            overflow: scroll;
+        }
+
+        .thumb img{
+            width: 120px;
+        }
+
+        .detail{
+            width: 550px;
+            height: 100%;
+            float: left;
+            overflow: hidden;
+        }
+
+        .detail img{
+            width: 450px;
+            padding: 50px;
+        }
+    </style>
+    <script>
+        function setImage(n){
+            console.log("당신이 선택한 숫자는" + n);
+            // 큰 상세이미지의 src를 선택한 썸네일과 동일한 이미지 주소로 교체하자
+            var detail = document.querySelector(".detail img");
+            detail.src = "../images/travel/" + n + ".jpg";
+        }
+    </script>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="thumb">
+            <img src="../images/travel/1.jpg" onclick="setImage('1')">
+            <img src="../images/travel/2.jpg" onclick="setImage('2')">
+            <img src="../images/travel/3.jpg" onclick="setImage('3')">
+            <img src="../images/travel/4.jpg" onclick="setImage('4')">
+            <img src="../images/travel/5.jpg" onclick="setImage('5')">
+            <img src="../images/travel/6.jpg" onclick="setImage('6')">
+            <img src="../images/travel/7.jpg" onclick="setImage('7')">
+            <img src="../images/travel/8.jpg" onclick="setImage('8')">
+            <img src="../images/travel/9.jpg" onclick="setImage('9')">
+            <img src="../images/travel/10.jpg" onclick="setImage('10')">
+        </div>
+        <div class="detail">
+            <img src="../images/뀨.png">
+        </div>
+    </div>
+</body>
+</html>
