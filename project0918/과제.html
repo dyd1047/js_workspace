@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>과제</title>
+    <style>
+        body{
+            margin: 0px;
+        }
+        
+        .wrapper{
+            width: 100%;
+            height: 1200px;
+            background-color: lightslategrey;
+        }
+
+        #box{
+            width: 40px;
+            height: 40px;
+            background-color: darkslategray;
+        }
+    </style>
+    <script>
+        var box;
+        var leftValue;
+        var rightValue;
+        let a = 0.01;
+        let b = 0.03;
+        var targetX = 0;
+        var targetY = 0;
+
+        var flag = false;
+        
+        function init(){
+            box = document.getElementById("box");
+            box.style.position = "absolute";
+            box.style.left = 50 + "px";
+            box.style.top = 100 + "px";
+            box.style.borderRadius = 50 + "px";
+            
+            leftValue = document.getElementById("leftValue");
+            rightValue = document.getElementById("rightValue");
+        }
+        
+        function setMove(){
+                targetX = parseInt(leftValue.value);
+                targetY = parseInt(rightValue.value);
+                console.log("X is ", box.style.left);
+                console.log("Y is ", box.style.top);
+                box.style.left = (parseInt(box.style.left) + a * (targetX - parseInt(box.style.left))) + "px";
+                box.style.top = (parseInt(box.style.top) + b * (targetY - parseInt(box.style.top))) + "px";
+        }
+        function move(){
+                setInterval("setMove()", 10);
+        }
+        
+    </script>
+</head>
+<body onload="init()">
+    <div class="wrapper">
+        <input id="leftValue" type="text" placeholder="이동할 X좌표">
+        <input id="rightValue" type="text" placeholder="이동할 Y좌표">
+        <button onclick="move()">실행</button>
+        <div id="box"></div>
+    </div>
+</body>
+</html>l
