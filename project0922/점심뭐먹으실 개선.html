@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<script src="../js/lib.js"></script>
+<script>
+    var food = new Array();
+    food[0] = "김치찌개";
+    food[1] = "불백";
+    food[2] = "햄버거";
+    food[3] = "도시락";
+    food[4] = "초밥";
+    food[5] = "순두부찌개";
+    food[6] = "냉면";
+    food[7] = "삼겹살";
+    food[8] = "분식";
+    food[9] = "중국집";
+    food[10] = "초옥이";
+
+window.addEventListener("load", function(){
+    var bt = document.querySelector("button");
+    bt.addEventListener("click", function(){
+        // h1에 메뉴를 출력
+        var h1 = document.querySelector("h1");
+        // 정의해놓은 getRandom(배열의 길이 - 1)
+        h1.innerText = food[getRandom(food.length - 1)];
+    });
+    
+});    
+</script>
+</head>
+<body>
+    <button>점심메뉴 보여주기</button>    
+    <h1></h1>
+</body>
+</html>

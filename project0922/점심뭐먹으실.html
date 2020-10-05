@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>랜덤메뉴</title>
+    <script src="../js/lib.js"></script>
+    <script>
+        var bt;
+        var txt;
+        var launch = new Array();
+
+        launch[0] = "김치찌개";
+        launch[1] = "불백";
+        launch[2] = "햄버거";
+        launch[3] = "도시락";
+        launch[4] = "초밥";
+        launch[5] = "순두부찌개";
+        launch[6] = "냉면";
+        launch[7] = "삼겹살";
+        launch[8] = "분식";
+        launch[9] = "중국집";
+        launch[10] = "초옥이";
+
+        function init(){
+            bt = document.getElementById("bt");
+            txt = document.getElementById("txt");
+            txt.style.fontSize = 100 + "px";
+        }
+
+        function menu(){
+            txt.innerText = launch[getRandom(launch.length - 1)];
+        }
+
+        window.addEventListener("load", function(){
+            init();
+        });
+    </script>
+</head>
+<body>
+    <button id="bt" onclick="menu()">점심메뉴 보여주기</button>
+    <h1 id="txt"></h1>
+</body>
+</html>

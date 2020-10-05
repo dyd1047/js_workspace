@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>9셀갤러리</title>
+    <style>
+        #wrapper{
+            width: 600px;
+            height: 600px;
+            background-color: lightpink;
+            margin: auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #maskW div{
+            width: 200px;
+            height: 200px;
+            background-color: lime;
+            float: left;
+            margin: 0px;
+        }
+
+        #mask{
+            opacity: 0;
+        }
+    </style>
+    <script>
+        var table;
+        var maskW;
+        var box;
+
+        function init(){
+            table = document.getElementById("table");
+            table.style.width = 600 + "px";
+            table.style.height = 600 + "px";
+            table.style.position = "absolute";
+
+            maskW = document.getElementById("maskW");
+            maskW.style.width = 600 + "px";
+            maskW.style.height = 600 + "px";
+            maskW.style.position = "absolute";
+
+            for(var i = 1; i <= 9; i++){
+                var img = document.createElement("img"); // <img>와 동일
+                img.src = "../images/travel/" + i + ".jpg"; // <img src = ""> 와 동일
+                img.style.width = 200 + "px";
+                img.style.height = 200 + "px";
+
+                table.appendChild(img);
+            }
+
+            box = document.getElementById("mask");
+            box.style.width = 200 + "px";
+            box.style.height = 200 + "px";
+
+        }
+
+        window.addEventListener("load", function(){
+            init();
+        });
+    </script>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="table"></div>
+        <div id="maskW">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div id="mask"></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</body>
+</html>

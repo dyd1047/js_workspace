@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>이퀄라이저개선</title>
+<style>
+#wrapper{
+    width:700px;
+    height:600px;
+    border:2px solid red;
+    margin: auto;
+    position: relative;
+}    
+</style>
+<script src="../js/lib.js"></script>
+<script>
+var wrapper;
+var barArray = new Array(); // 공간확보는 하지 않고, 배열만 선언한 것
+// 배열 선언과 동시에 초기화가 가능하다(데이터량이 많지 않을 경우)
+var colorArray = ["red", "orange", "yellow", "green", "blue", "navy", "purple"];
+var a=0.1;
+var targetH=500; //바의 목표 높이
+var barWidth = 65; // 막대바의 너비
+
+//막대생성 
+function createBar(){
+    for(var i = 0; i < 7; i++){
+        var bar=document.createElement("div");
+        bar.style.position="absolute";
+        bar.style.left=(i * barWidth) + "px";
+        bar.style.top=0+"px";
+        bar.style.width=barWidth+"px";
+        bar.style.height=20+"px";
+        bar.style.borderRadius="4px";
+        bar.style.background=colorArray[i];
+
+        wrapper.appendChild(bar);//wrapper에 추가!!
+
+        // 사이즈가 0인 배열에, 방금 생성된 바를 추가하자!
+        // 개발자가 그 크기를 정해놓지 못할 경우에는 아주 유용하다
+        // ex) 채팅서버 구축시 사용자가 몇 명이 들어올지 알 수가 없다.
+        barArray.push(bar);
+
+    }
+    
+}    
+
+//막대크기 변경 함수 
+function move(){
+    targetH = getRandomBetween(20, 500);
+    // 0 ~ 6 사이의 랜덤한 숫자를 추출
+    var index = getRandom(barArray.length - 1);
+    barArray[index].style.height = parseFloat(barArray[index].style.height) + a*(targetH-parseFloat(barArray[index].style.height))+"px";
+    barArray[index].innerText=parseFloat(barArray[index].style.height);
+}
+
+function init(){
+    wrapper=document.getElementById("wrapper");
+    // barArray보다 색상을 먼저 존재시키자
+    // colorArray[0] = "red";
+    // colorArray[1] = "orange";
+    // colorArray[2] = "yellow";
+    // colorArray[3] = "green";
+    // colorArray[4] = "blue";
+    // colorArray[5] = "navy";
+    // colorArray[6] = "purple";
+    createBar();
+    setInterval("move()",10);
+}   
+window.addEventListener("load",function(){
+    init();
+}); 
+</script>
+</head>
+<body>
+    <div id="wrapper"></div>
+</body>
+</html>

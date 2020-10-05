@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>국기게임</title>
+    <style>
+        #wrapper{
+            width: 500px;
+            height: 800px;
+            background-color: wheat;
+            margin: auto;
+        }
+
+        #world{
+            width: 100%;
+            height: 400px;
+            background-color: thistle;
+            text-align: center;
+        }
+
+        #hint{
+            width: 100%;
+            height: 100px;
+            background-color: violet;
+            font-size: 60px;
+            text-align: center;
+        }
+
+        #word-input{
+            width: 100%;
+            height: 100px;
+            background-color: steelblue;
+            text-align: center;
+        }
+
+        #word-input input{
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+            font-size: 60px;
+            text-align: center;
+        }
+
+        #feedback{
+            width: 100%;
+            height: 100px;
+            background-color: yellowgreen;
+            font-size: 60px;
+            text-align: center;
+        }
+
+        #record{
+            width: 100%;
+            height: 100px;
+            background-color: cadetblue;
+            font-size: 60px;
+            text-align: center;
+        }
+    </style>
+    <script src="./map.js"></script>
+    <script>
+        var world;
+        var img;
+        var txt;
+        var feedback;
+        var n = 0;
+        var score = 0;
+
+        function createImage(){
+                img = document.createElement("img");
+                img.src = data[n][0];
+                img.style.width = 500 + "px";
+                img.style.height = 400 + "px";
+                world.appendChild(img);
+        }
+
+        function next(){
+            txt.addEventListener("keyup", function(){
+                // 키보드 중, 엔터키를 누를때 다음 단어 나오게 처리
+                if(event.keyCode == 13){
+                    // 입력값과 출력된 단어와의 일치성을 판단한 후, 피드백 처리
+                    if(txt.value == data[n][2]){
+                        // 피드백 O 출력
+                        feedback.innerText = "O";
+
+                        // 점수도 10점 증가
+                        score += 10; // 점수 10점 증가
+                        printScore(); // 점수 출력
+                    }else {
+                        // 피드백 X 출력
+                        feedback.innerText = "X";
+                    }
+                    // 텍스트 박스에 입력한 데이터 초기화
+                    txt.value = "";
+
+                    // 다음 문제 나오게
+                    n++;
+                    if(n >= data.length){ // 준비된 문제가 모두 소진되면..
+                        alert("게임 종료")
+                        question.innerText = "Game Over";
+                    }else {
+                        for(var i = 0; i < data.length; i++){
+                            if(i != n){
+                                img.style.display = "none";
+                            }
+                        }
+                        createImage();
+                        printHint();
+                    }
+                }
+            });
+        }
+
+        function printHint(){
+            hint.innerText = data[n][1];
+        }
+
+        function printScore(){
+            record.innerText = score + " 점";
+        }
+
+        function init(){
+            world = document.getElementById("world");
+            hint = document.getElementById("hint");
+            txt = document.getElementById("txt");
+            feedback = document.getElementById("feedback");
+        }
+
+        window.addEventListener("load", function(){
+            init();
+            createImage();
+            printHint();
+            printScore();
+            next();
+            txt.focus();
+        });
+    </script>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="world"></div>
+        <div id="hint"></div>
+        <div id="word-input">
+            <input id="txt" type="text" placeholder="정답을 입력하세요.">
+        </div>
+        <div id="feedback"></div>
+        <div id="record"></div>
+    </div>
+</body>
+</html>

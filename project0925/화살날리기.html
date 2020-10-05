@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>화살날리기</title>
+    <style>
+        #wrapper{
+            width: 1000px;
+            height: 800px;
+            background-color: wheat;
+            margin: auto;
+            position: relative;
+            overflow: hidden;
+        }
+    </style>
+    <script>
+        var wrapper;
+        var arrow;
+        var arrow1, arrow2, arrow3, arrow4, arrow5;
+        var n = 5;
+        var arrowArray = new Array();
+
+        class Arrow{
+            constructor(speed, arrowColor, n){
+                this.speed = speed;
+                this.arrowColor = arrowColor;
+                this.n = n;
+            }
+            move(){
+                arrowArray[this.n].style.left = parseInt(arrowArray[this.n].style.left) + this.speed + "px";
+            }
+            setColor(){
+                arrowArray[this.n].style.color = this.arrowColor;
+            }
+        }
+
+        function createArrow(){
+            for(var i = 0; i < n; i++){
+                arrow = document.createElement("div");
+                arrow.style.width = 100 + "px";
+                arrow.style.height = 100 + "px";
+                arrow.style.fontSize = 80 + "px";
+                arrow.style.position = "absolute";
+                arrow.style.top = (i*100) + "px";
+                arrow.style.left = 100 + "px";
+                arrow.innerText = "→";
+                wrapper.appendChild(arrow);
+                arrowArray[i] = arrow;
+            }
+        }
+
+        function arrowMove(){
+            arrow1 = new Arrow(10, "red", 0);
+            arrow1.move();
+            arrow1.setColor();
+            arrow2 = new Arrow(20, "orange", 1);
+            arrow2.move();
+            arrow2.setColor();
+            arrow3 = new Arrow(30, "yellow", 2);
+            arrow3.move();
+            arrow3.setColor();
+            arrow4 = new Arrow(40, "green", 3);
+            arrow4.move();
+            arrow4.setColor();
+            arrow5 = new Arrow(50, "blue", 4);
+            arrow5.move();
+            arrow5.setColor();
+        }
+        
+        function init() {
+            wrapper = document.getElementById("wrapper");
+            
+        }
+
+        window.addEventListener("load", function(){
+            init();
+            createArrow();
+            setInterval("arrowMove()", 500);
+        });
+    </script>
+</head>
+<body>
+    <div id="wrapper"></div>
+</body>
+</html>
