@@ -89,7 +89,7 @@
         function createEnemy(){
             for(var j = 0; j < 20; j++){
                 for(var i = 0; i < enemySrcArray.length; i++){
-                    var enemy = new Enemy(enemySrcArray[getRandom(enemySrcArray.length-1)], (screen.width/5)*i + 100, ((-screen.height*j) - 100), 75, 100, 0, 0.5);
+                    var enemy = new Enemy(enemySrcArray[getRandom(enemySrcArray.length-1)], (screen.width/5)*i + 100, ((-screen.height*j) - 100), 75, 100, 0, 0.3);
                     enemyArray.push(enemy);
                 }
             }
